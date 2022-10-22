@@ -4,80 +4,46 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Change in Rs to be returned by the Vending Machine: ");
-            int change = Convert.ToInt32(Console.ReadLine());
-            int thousNotes, fiveHundNotes, hundNotes, fiftyNotes, tenNotes, fiveNotes, twoNotes, oneNotes, rem;
-            int count = 0;
-            while (change != 0)
+            Console.WriteLine("Enter month number: ");
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Date: ");
+            int d = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Year: ");
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            int y0, x, m0, d0;
+
+            y0 = y - (14 - m) / 12;
+            x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+            m0 = m + 12 * ((14 - m) / 12) - 2;
+            d0 = (d + x + (31 * m0 / 12)) % 7;
+
+            switch (d0)
             {
-                if (change >= 1000)
-                {
-                    thousNotes = change / 1000;
-                    change = change % 1000;
-                    //m = change;
-                    count = count + thousNotes;
-                    Console.WriteLine(thousNotes + " 1000 notes");
-                }
-
-                else if (change >= 500)
-                {
-                    fiveHundNotes = change / 500;
-                    change = change % 500;
-                    //m = change;
-                    count = count + fiveHundNotes;
-                    Console.WriteLine(fiveHundNotes + " 500 notes");
-                }
-                else if (change >= 100)
-                {
-                    hundNotes = change / 100;
-                    change = change % 100;
-
-                    count = count + hundNotes;
-                    Console.WriteLine(hundNotes + " 100 notes");
-                }
-                else if (change >= 50)
-                {
-                    fiftyNotes = change / 50;
-                    change = change % 50;
-                    //em = change;
-                    count = count + fiftyNotes;
-                    Console.WriteLine(fiftyNotes + " 50 notes");
-                }
-                else if (change >= 10)
-                {
-                    tenNotes = change / 10;
-                    change = change % 10;
-                    //m = change;
-                    count = count + tenNotes;
-                    Console.WriteLine(tenNotes + " 10 notes");
-                }
-                else if (change >= 5)
-                {
-                    fiveNotes = change / 5;
-                    change = change % 5;
-                    //m = change;
-                    count = count + fiveNotes;
-                    Console.WriteLine(fiveNotes + " 5 notes");
-                }
-                else if (change >= 2)
-                {
-                    twoNotes = change / 2;
-                    change = change % 2;
-                    //em = change;
-                    count = count + twoNotes;
-                    Console.WriteLine(twoNotes + " 2 notes");
-                }
-                else if (change >= 1)
-                {
-                    oneNotes = change / 1;
-                    change = change % 1;
-                    //em = change;
-                    count = count + oneNotes;
-                    Console.WriteLine(oneNotes + " 1 notes");
-                }
+                case 0:
+                    { Console.WriteLine("Sunday"); }
+                    break;
+                case 1:
+                    { Console.WriteLine("Monday"); }
+                    break;
+                case 2:
+                    { Console.WriteLine("Tuesday"); }
+                    break;
+                case 3:
+                    { Console.WriteLine("Wednesday"); }
+                    break;
+                case 4:
+                    { Console.WriteLine("Thursday"); }
+                    break;
+                case 5:
+                    { Console.WriteLine("Friday"); }
+                    break;
+                case 6:
+                    { Console.WriteLine("Saturday"); }
+                    break;
             }
-
-            Console.WriteLine("Number of minimum notes to be given : " + count);
         }
     }
 }
